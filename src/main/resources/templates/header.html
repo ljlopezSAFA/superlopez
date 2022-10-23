@@ -1,0 +1,23 @@
+<header  xmlns:th="http://www.thymeleaf.org"
+         xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <div class="fondo_menu_navegacion">
+
+        <div class= "logo">
+            <a href="inicio.html"><img class="img_logo" src="css/imagenes/logo.png"></a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a th:href="@{/inicio}">Inicio</a></li>
+                <li><a th:href="@{/sobreNosotros}">Sobre Nosotros</a></li>
+                <li><a th:href="@{/productos}">Productos</a></li>
+                <li><a th:href="@{/ofertas}">Ofertas</a></li>
+            </ul>
+
+            <a class="carrito"th:href="@{/login}"><img class="img_carrito" src="css/imagenes/usuario.png"></a>
+            <a class="carrito"th:href="@{/carrito}"><img class="img_carrito" src="css/imagenes/carrito.png"></a>
+        </nav>
+
+    </div>
+</header>

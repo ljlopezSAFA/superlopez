@@ -13,7 +13,7 @@ public class PedidoService {
 
 
     public void guardarNuevoPedido(Pedido pedido){
-        pedido
+        pedidoRepository.save(pedido);
 
     }
 

@@ -1,0 +1,56 @@
+<!DOCTYPE html >
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="head.html">
+</head>
+<body>
+
+
+
+<form th:action="@{/login}" th:type="post">
+    <div class= "form-group row">
+
+        <div class="offset-4 col-4">
+        <a th:href="@{/inicio}"><img class="img_logo" src="css/imagenes/logo.png"></a>
+        </div>
+
+    </div>
+
+    <br><br>
+
+
+    <div class="form-group row">
+        <div class="offset-3 col-6">
+            <div class="input-group">
+                <label for="username" class="col-4 col-form-label">Usuario</label>
+                <input id="username" name="username" type="text" class="form-control" required="required">
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-3 col-6">
+            <div class="input-group">
+                <label for="password" class="col-4 col-form-label">Contraseña</label>
+                <input id="password" name="password" type="password" class="form-control" required="required">
+            </div>
+        </div>
+    </div>
+
+    <input name="_csrf" type="hidden">
+
+    <br><br>
+
+    <div class="form-group row">
+        <div class="offset-6 col-8">
+            <button type="submit" class="btn btn-danger">Acceder</button>
+        </div>
+    </div>
+</form>
+<br>
+<p th:if="${loginError}" class="error">Wrong user or password</p>
+<br>
+
+
+<footer th:insert="footer.html"></footer>
+
+</body>
+</html>

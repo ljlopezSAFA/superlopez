@@ -17,7 +17,6 @@ public class PedidoController {
 
     @RequestMapping("/new")
     private void  realizarPedido(@RequestBody Pedido pedido){
-
     }
 
 

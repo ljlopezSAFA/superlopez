@@ -1,12 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>inicio</title>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="head.html">
 </head>
+
 <body>
 
-<h1>Bienvenidos a Superlopez</h1>
+
+<header th:insert="header.html"></header>
+
+
+<br><br>
+
+<div class="portada">
+
+    <div class="texto_portada">
+        <h1>Tu tienda de confianza,<br> a la vuelta de la esquina</h1>
+    </div>
+
+</div>
+
+
+<div class="contenedor_flexible">
+    <div class="icono_publi">
+        <img class="icono_publi_img" src="css/imagenes/low_price.png">
+        <p>Los mejores precios del mercado</p>
+    </div>
+
+    <div class="icono_publi">
+        <img class="icono_publi_img" src="css/imagenes/jamon.png">
+        <p>Productos de primera calidad</p>
+    </div>
+
+
+    <div class="icono_publi">
+        <img class="icono_publi_img" src="css/imagenes/calendar.png">
+        <p>Nuevas ofertas a diario</p>
+    </div>
+
+
+    <div class="icono_publi">
+        <img class="icono_publi_img" src="css/imagenes/manos.png">
+        <p>Trato cercano y personalizado</p>
+    </div>
+
+</div>
+
+
+<footer th:insert="footer.html"></footer>
+
 
 </body>
 </html>

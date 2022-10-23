@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="head.html">
+</head>
+<body>
+
+<header th:insert="header.html"></header>
+
+  
+
+
+
+
+
+    <section style="margin-right:  100px;">
+
+    		<br><br>
+    		<h1 style="margin-right: 120px">Tu pedido</h1>
+    		<br><br>
+
+
+    		<div class="container">
+
+				<table class="table">
+				  <thead>
+				    <tr class="table-danger">
+				      <th scope="col">Linea de Compra</th>
+				      <th scope="col">Artículo</th>
+				      <th scope="col">Precio</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th scope="row">1</th>
+				      <td>Lote Barbacoa 5</td>
+				      <td>10.99 €</td>
+				    </tr>
+				    <tr>
+				     <th scope="row">2</th>
+				      <td>Lote Barbacoa 2</td>
+				      <td>15.99 €</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">3</th>
+				      <td>Lote Barbacoa 8</td>
+				      <td>12.99 €</td>
+				    </tr>
+				    <tr class="table-danger">
+				      <th scope="row" colspan="2">Total</th>
+				      <td>45,27 €</td>
+				    </tr>
+				  </tbody>
+				</table>
+			   
+			</div>
+
+
+			<div class="container">
+				<br><br>
+				<div class="row">
+					<div class="col" ></div>
+					<div class="col" ></div>
+					<div class="col" >
+						 <button type="button" class="btn btn-danger">Seguir comprando</button>
+						 <button type="button" class="btn btn-danger">Pasar por caja</button>
+					</div>
+				</div>
+			</div>
+			
+
+			
+    	
+    </section>
+
+
+
+	<footer th:insert="footer.html"></footer>
+     
+
+
+
+
+
+</body>
+</html>
