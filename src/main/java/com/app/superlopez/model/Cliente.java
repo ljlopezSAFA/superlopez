@@ -1,80 +1,42 @@
 package com.app.superlopez.model;
 
-import javax.persistence.*;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+@Data
 @Entity
 @Table(name = "cliente")
 public class Cliente {
 
-    private Integer id;
-    private String nombre;
-    private String apellidos;
-    private String dni;
-    private Integer codigoValidacion;
-    private String direccion;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId() {
-        return id;
-    }
+    private Integer id;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @Column(name = "nombre")
+    private String nombre;
 
-    public String getNombre() {
-        return nombre;
-    }
+    @Column(name = "apellidos")
+    private String apellidos;
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    @Column(name = "dni")
+    private String dni;
 
-    public String getApellidos() {
-        return apellidos;
-    }
+    @Column(name = "codigo_validacion")
+    private Integer codigoValidacion;
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
+    @Column(name = "direccion")
+    private String direccion;
 
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public Integer getCodigoValidacion() {
-        return codigoValidacion;
-    }
-
-    public void setCodigoValidacion(Integer codigoValidacion) {
-        this.codigoValidacion = codigoValidacion;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
+    @JsonBackReference
+    private Set<Pedido> pedidos = new HashSet<>(0);
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
-        return id == cliente.id && Objects.equals(nombre, cliente.nombre) && Objects.equals(apellidos, cliente.apellidos) && Objects.equals(dni, cliente.dni) && Objects.equals(codigoValidacion, cliente.codigoValidacion) && Objects.equals(direccion, cliente.direccion);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nombre, apellidos, dni, codigoValidacion, direccion);
-    }
 }

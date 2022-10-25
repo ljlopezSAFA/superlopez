@@ -1,76 +1,54 @@
 package com.app.superlopez.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
+import org.hibernate.Hibernate;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Table(name = "lote_barbacoa")
 public class LoteBarbacoa {
 
-    private int id;
-    private String codigo;
-    private Integer numLote;
-    private String apodo;
-    private Set<Producto> productos = new HashSet<>();
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int getId() {
-        return id;
-    }
+    @Column(name = "id")
+    private Integer id;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    @Column(name = "codigo")
+    private String codigo;
 
-    public String getCodigo() {
-        return codigo;
-    }
+    @Column(name = "num_lote")
+    private Integer numLote;
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+    @Column(name = "apodo")
+    private String apodo;
 
-    public Integer getNumLote() {
-        return numLote;
-    }
-
-    public void setNumLote(Integer numLote) {
-        this.numLote = numLote;
-    }
-
-    public String getApodo() {
-        return apodo;
-    }
-
-    public void setApodo(String apodo) {
-        this.apodo = apodo;
-    }
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "lote_producto" , joinColumns = @JoinColumn(name = "id_lote_barbacoa"), inverseJoinColumns =@JoinColumn(name = "id_producto") )
-    public Set<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(Set<Producto> productos) {
-        this.productos = productos;
-    }
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
+    @JoinTable(name = "lote_producto" ,
+            joinColumns = @JoinColumn(name = "id_lote_barbacoa"),
+            inverseJoinColumns =@JoinColumn(name = "id_producto") )
+    private Set<Producto> productos = new HashSet<>();
 
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         LoteBarbacoa that = (LoteBarbacoa) o;
-        return id == that.id && Objects.equals(codigo, that.codigo) && Objects.equals(numLote, that.numLote) && Objects.equals(apodo, that.apodo) && Objects.equals(productos, that.productos);
+        return id != null && Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, codigo, numLote, apodo, productos);
+        return getClass().hashCode();
     }
 }

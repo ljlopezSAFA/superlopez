@@ -1,47 +1,48 @@
 package com.app.superlopez.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.*;
+import org.hibernate.Hibernate;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Table(name = "producto")
 public class Producto {
-
-    private Integer id;
-    private String descripcion;
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    private Integer id;
 
     @Column(name = "descripcion")
-    public String getDescripcion() {
-        return descripcion;
-    }
+    private String descripcion;
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonBackReference
+    @JoinTable(name = "lote_producto" ,
+            joinColumns = @JoinColumn(name = "id_producto"),
+            inverseJoinColumns =@JoinColumn(name = "id_lote_barbacoa") )
+    @ToString.Exclude
+    private Set<LoteBarbacoa> lotesBarbacoa = new HashSet<>(0);
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         Producto producto = (Producto) o;
-        return id == producto.id && Objects.equals(descripcion, producto.descripcion);
+        return id != null && Objects.equals(id, producto.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, descripcion);
+        return getClass().hashCode();
     }
 }

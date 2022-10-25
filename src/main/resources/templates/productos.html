@@ -21,131 +21,150 @@
 
     		<div class="container">
 
-			  <div class="row">
-			    <div class="col">
-				     <div class="card" style="width: 18rem;">
-					  <div class="card-body" style="text-align: center;">
-					    <h5 class="card-title">Lote 1</h5>
-					    <br>
-					    <p class="card-text"> 1/2 kg Alitas de Pollo</p>
-					    <p class="card-text"> 1/2 kg Salchichas Caseras</p>
-					    <p class="card-text"> 1/2 kg Filete de Lomo</p>
-					    <p class="card-text"> 1/2 kg Filete de Pollo</p>
-					    <br>
-					    <p class="card-text">10,99 €</p>
-					   <button type="button" class="btn btn-danger">Comprar</button>
-					  </div>
-				</div>
-			    </div>
-			    <div class="col">
-				     <div class="card" style="width: 18rem;">
-					  <div class="card-body" style="text-align: center;">
-					    <h5 class="card-title">Lote 2</h5>
-					    <br>
-					    <p class="card-text"> 1/2 kg Pinchito de Pollo</p>
-					    <p class="card-text"> 1/2 kg Hamburguesas</p>
-					    <p class="card-text"> 1/2 kg Magro de cerdo a trocitos</p>
-					    <p class="card-text"> 1/2 kg Salchichas</p>
-					    <br>
-					    <p class="card-text">10,99 €</p>
-					   <button type="button" class="btn btn-danger">Comprar</button>
-					  </div>
-					</div>
-			    </div>
-			    <div class="col">
-				     <div class="card" style="width: 18rem;">
-					  <div class="card-body" style="text-align: center;">
-					    <h5 class="card-title">Lote 3</h5>
-					    <br>
-					    <p class="card-text"> 1/2 kg Alitas de Pollo</p>
-					    <p class="card-text"> 1/2 kg Salchichas Caseras</p>
-					    <p class="card-text"> 1/2 kg Filete de Lomo</p>
-					    <p class="card-text"> 1/2 kg Filete de Pollo</p>
-					    <br>
-					    <p class="card-text">10,99 €</p>
-					   <button type="button" class="btn btn-danger">Comprar</button>
-					  </div>
-				</div>
-			    </div>
-			    <div class="col">
-				     <div class="card" style="width: 18rem;">
-					  <div class="card-body" style="text-align: center;">
-					    <h5 class="card-title">Lote 4</h5>
-					    <br>
-					    <p class="card-text"> 1/2 kg Alitas de Pollo</p>
-					    <p class="card-text"> 1/2 kg Salchichas Caseras</p>
-					    <p class="card-text"> 1/2 kg Filete de Lomo</p>
-					    <p class="card-text"> 1/2 kg Filete de Pollo</p>
-					    <br>
-					    <p class="card-text">10,99 €</p>
-					   <button type="button" class="btn btn-danger">Comprar</button>
-					  </div>
-				</div>
-			    </div>
-			  </div>
 
-			  <div class="row">
-			    <div class="col">
-				     <div class="card" style="width: 18rem;">
-					  <div class="card-body" style="text-align: center;">
-					    <h5 class="card-title">Lote 5</h5>
-					    <br>
-					    <p class="card-text"> 1/2 kg Alitas de Pollo</p>
-					    <p class="card-text"> 1/2 kg Salchichas Caseras</p>
-					    <p class="card-text"> 1/2 kg Filete de Lomo</p>
-					    <p class="card-text"> 1/2 kg Filete de Pollo</p>
-					    <br>
-					    <p class="card-text">10,99 €</p>
-					   <button type="button" class="btn btn-danger">Comprar</button>
-					  </div>
-				</div>
-			    </div>
-			    <div class="col">
-				     <div class="card" style="width: 18rem;">
-					  <div class="card-body" style="text-align: center;">
-					    <h5 class="card-title">Lote 6</h5>
-					    <br>
-					    <p class="card-text"> 1/2 kg Pinchito de Pollo</p>
-					    <p class="card-text"> 1/2 kg Hamburguesas</p>
-					    <p class="card-text"> 1/2 kg Magro de cerdo a trocitos</p>
-					    <p class="card-text"> 1/2 kg Salchichas</p>
-					    <br>
-					    <p class="card-text">10,99 €</p>
-					   <button type="button" class="btn btn-danger">Comprar</button>
-					  </div>
+				<th:block>
+					<div class="row">
+						<div th:each="lote : ${lotes}"  class="col">
+							<div class="card" style="width: 18rem;">
+								<div class="card-body" style="text-align: center;">
+									<h5 class="card-title" th:text=" ${lote.codigo}"></h5>
+									<br>
+									<p th:each=" producto: ${lote.productos}"
+									   th:text="${producto.descripcion}" class="card-text"></p>
+									<br>
+									<p class="card-text">10,99 €</p>
+									<a role="button" th:href="@{'/productos/comprar?idLote=' + ${lote.id}}"  class="btn btn-danger">Comprar</a>
+								</div>
+							</div>
+						</div>
 					</div>
-			    </div>
-			    <div class="col">
-				     <div class="card" style="width: 18rem;">
-					  <div class="card-body" style="text-align: center;">
-					    <h5 class="card-title">Lote 7</h5>
-					    <br>
-					    <p class="card-text"> 1/2 kg Alitas de Pollo</p>
-					    <p class="card-text"> 1/2 kg Salchichas Caseras</p>
-					    <p class="card-text"> 1/2 kg Filete de Lomo</p>
-					    <p class="card-text"> 1/2 kg Filete de Pollo</p>
-					    <br>
-					    <p class="card-text">10,99 €</p>
-					   <button type="button" class="btn btn-danger">Comprar</button>
-					  </div>
-				</div>
-			</div>
-				<div class="col">
-				     <div class="card" style="width: 18rem;">
-					  <div class="card-body" style="text-align: center;">
-					    <h5 class="card-title">Lote 8</h5>
-					    <br>
-					    <p class="card-text"> 1/2 kg Alitas de Pollo</p>
-					    <p class="card-text"> 1/2 kg Salchichas Caseras</p>
-					    <p class="card-text"> 1/2 kg Filete de Lomo</p>
-					    <p class="card-text"> 1/2 kg Filete de Pollo</p>
-					    <br>
-					    <p class="card-text">10,99 €</p>
-					   <button type="button" class="btn btn-danger">Comprar</button>
-					  </div>
-				</div>
-			    </div>
-			  </div>
+				</th:block>
+
+<!--			  <div class="row">-->
+<!--			    <div class="col">-->
+<!--				     <div class="card" style="width: 18rem;">-->
+<!--					  <div class="card-body" style="text-align: center;">-->
+<!--					    <h5 class="card-title">Lote 1</h5>-->
+<!--					    <br>-->
+<!--					    <p class="card-text"> 1/2 kg Alitas de Pollo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Salchichas Caseras</p>-->
+<!--					    <p class="card-text"> 1/2 kg Filete de Lomo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Filete de Pollo</p>-->
+<!--					    <br>-->
+<!--					    <p class="card-text">10,99 €</p>-->
+<!--					   <button type="button" class="btn btn-danger">Comprar</button>-->
+<!--					  </div>-->
+<!--				</div>-->
+<!--			    </div>-->
+<!--			    <div class="col">-->
+<!--				     <div class="card" style="width: 18rem;">-->
+<!--					  <div class="card-body" style="text-align: center;">-->
+<!--					    <h5 class="card-title">Lote 2</h5>-->
+<!--					    <br>-->
+<!--					    <p class="card-text"> 1/2 kg Pinchito de Pollo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Hamburguesas</p>-->
+<!--					    <p class="card-text"> 1/2 kg Magro de cerdo a trocitos</p>-->
+<!--					    <p class="card-text"> 1/2 kg Salchichas</p>-->
+<!--					    <br>-->
+<!--					    <p class="card-text">10,99 €</p>-->
+<!--					   <button type="button" class="btn btn-danger">Comprar</button>-->
+<!--					  </div>-->
+<!--					</div>-->
+<!--			    </div>-->
+<!--			    <div class="col">-->
+<!--				     <div class="card" style="width: 18rem;">-->
+<!--					  <div class="card-body" style="text-align: center;">-->
+<!--					    <h5 class="card-title">Lote 3</h5>-->
+<!--					    <br>-->
+<!--					    <p class="card-text"> 1/2 kg Alitas de Pollo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Salchichas Caseras</p>-->
+<!--					    <p class="card-text"> 1/2 kg Filete de Lomo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Filete de Pollo</p>-->
+<!--					    <br>-->
+<!--					    <p class="card-text">10,99 €</p>-->
+<!--					   <button type="button" class="btn btn-danger">Comprar</button>-->
+<!--					  </div>-->
+<!--				</div>-->
+<!--			   -->
+<!--			    <div class="col">-->
+<!--				     <div class="card" style="width: 18rem;">-->
+<!--					  <div class="card-body" style="text-align: center;">-->
+<!--					    <h5 class="card-title">Lote 4</h5>-->
+<!--					    <br>-->
+<!--					    <p class="card-text"> 1/2 kg Alitas de Pollo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Salchichas Caseras</p>-->
+<!--					    <p class="card-text"> 1/2 kg Filete de Lomo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Filete de Pollo</p>-->
+<!--					    <br>-->
+<!--					    <p class="card-text">10,99 €</p>-->
+<!--					   <button type="button" class="btn btn-danger">Comprar</button>-->
+<!--					  </div>-->
+<!--				</div>-->
+<!--			    </div>-->
+<!--			  </div>-->
+
+<!--			  <div class="row">-->
+<!--			    <div class="col">-->
+<!--				     <div class="card" style="width: 18rem;">-->
+<!--					  <div class="card-body" style="text-align: center;">-->
+<!--					    <h5 class="card-title">Lote 5</h5>-->
+<!--					    <br>-->
+<!--					    <p class="card-text"> 1/2 kg Alitas de Pollo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Salchichas Caseras</p>-->
+<!--					    <p class="card-text"> 1/2 kg Filete de Lomo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Filete de Pollo</p>-->
+<!--					    <br>-->
+<!--					    <p class="card-text">10,99 €</p>-->
+<!--					   <button type="button" class="btn btn-danger">Comprar</button>-->
+<!--					  </div>-->
+<!--				</div>-->
+<!--			    </div>-->
+<!--			    <div class="col">-->
+<!--				     <div class="card" style="width: 18rem;">-->
+<!--					  <div class="card-body" style="text-align: center;">-->
+<!--					    <h5 class="card-title">Lote 6</h5>-->
+<!--					    <br>-->
+<!--					    <p class="card-text"> 1/2 kg Pinchito de Pollo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Hamburguesas</p>-->
+<!--					    <p class="card-text"> 1/2 kg Magro de cerdo a trocitos</p>-->
+<!--					    <p class="card-text"> 1/2 kg Salchichas</p>-->
+<!--					    <br>-->
+<!--					    <p class="card-text">10,99 €</p>-->
+<!--					   <button type="button" class="btn btn-danger">Comprar</button>-->
+<!--					  </div>-->
+<!--					</div>-->
+<!--			    </div>-->
+<!--			    <div class="col">-->
+<!--				     <div class="card" style="width: 18rem;">-->
+<!--					  <div class="card-body" style="text-align: center;">-->
+<!--					    <h5 class="card-title">Lote 7</h5>-->
+<!--					    <br>-->
+<!--					    <p class="card-text"> 1/2 kg Alitas de Pollo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Salchichas Caseras</p>-->
+<!--					    <p class="card-text"> 1/2 kg Filete de Lomo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Filete de Pollo</p>-->
+<!--					    <br>-->
+<!--					    <p class="card-text">10,99 €</p>-->
+<!--					   <button type="button" class="btn btn-danger">Comprar</button>-->
+<!--					  </div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--				<div class="col">-->
+<!--				     <div class="card" style="width: 18rem;">-->
+<!--					  <div class="card-body" style="text-align: center;">-->
+<!--					    <h5 class="card-title">Lote 8</h5>-->
+<!--					    <br>-->
+<!--					    <p class="card-text"> 1/2 kg Alitas de Pollo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Salchichas Caseras</p>-->
+<!--					    <p class="card-text"> 1/2 kg Filete de Lomo</p>-->
+<!--					    <p class="card-text"> 1/2 kg Filete de Pollo</p>-->
+<!--					    <br>-->
+<!--					    <p class="card-text">10,99 €</p>-->
+<!--					   <button type="button" class="btn btn-danger">Comprar</button>-->
+<!--					  </div>-->
+<!--				</div>-->
+<!--			    </div>-->
+<!--			  </div>-->
 
 
 

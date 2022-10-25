@@ -25,7 +25,7 @@ public class UtilidadesSesion {
 
     public static Rol getRolUsuarioLogueado(HttpSession session){
         SecurityContextImpl securityContext = (SecurityContextImpl) session.getAttribute("SPRING_SECURITY_CONTEXT");
-        Rol rol = Rol.valueOf(String.valueOf(Collections.singletonList(securityContext.getAuthentication().getAuthorities()).get(0)));
+        Rol rol = Rol.valueOf((Collections.singletonList(securityContext.getAuthentication().getAuthorities()).get(0).toString().replace("[","").replace("]","")));
         return rol;
     }
 }

@@ -6,7 +6,7 @@
 
 
 
-<form action="/login" method="post">
+<form action="/register" method="post" th:object="${registerForm}">
     <div class= "form-group row">
 
         <div class="offset-4 col-4">
@@ -17,8 +17,8 @@
 
     <br><br>
 
-
     <div class="form-group row">
+        <h1>Regístrate</h1>
         <div class="offset-3 col-6">
             <div class="input-group">
                 <label for="username" class="col-4 col-form-label">Usuario</label>
@@ -40,7 +40,7 @@
     <th:block th:if="${error}">
         <div class="offset-3 col-6">
             <div class="alert alert-danger" role="alert">
-                Usuario o Contraseña erróneos
+               El usuario ya existe
             </div>
         </div>
     </th:block>
@@ -49,13 +49,10 @@
 
     <div class="form-group row">
         <div class="offset-6 col-8">
-            <button type="submit" class="btn btn-danger">Acceder</button>
+            <button type="submit" class="btn btn-danger">Registrarse</button>
         </div>
     </div>
 </form>
-
-
-<a th:href="@{/register}"> Registrar Usuario</a>
 
 <br>
 <br>

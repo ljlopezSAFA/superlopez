@@ -1,5 +1,8 @@
 package com.app.superlopez.controller;
 
+import com.app.superlopez.model.enums.Rol;
+import com.app.superlopez.utilidades.UtilidadesSesion;
+import jdk.jshell.execution.Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,6 +18,10 @@ public class MainController {
 
     @RequestMapping("/inicio")
     public String inicio(HttpSession session) {
+        boolean estaLogeado = UtilidadesSesion.hayUsuarioLogeado(session);
+        if (estaLogeado) {
+            Rol rol = UtilidadesSesion.getRolUsuarioLogueado(session);
+        }
         return "inicio";
     }
 
@@ -28,10 +35,6 @@ public class MainController {
         return "carrito";
     }
 
-    @RequestMapping("/productos")
-    public String productos() {
-        return "productos";
-    }
 
     @RequestMapping("/ofertas")
     public String ofertas() {
