@@ -11,7 +11,6 @@ public class PedidoService {
     @Autowired
     private PedidoRepository pedidoRepository;
 
-
     public void guardarNuevoPedido(Pedido pedido){
         pedidoRepository.save(pedido);
 

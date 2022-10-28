@@ -4,6 +4,7 @@ import com.app.superlopez.model.enums.Rol;
 import org.springframework.security.core.context.SecurityContextImpl;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -27,5 +28,12 @@ public class UtilidadesSesion {
         SecurityContextImpl securityContext = (SecurityContextImpl) session.getAttribute("SPRING_SECURITY_CONTEXT");
         Rol rol = Rol.valueOf((Collections.singletonList(securityContext.getAuthentication().getAuthorities()).get(0).toString().replace("[","").replace("]","")));
         return rol;
+    }
+
+    public static String getUserName(HttpSession session){
+        SecurityContextImpl securityContext = (SecurityContextImpl) session.getAttribute("SPRING_SECURITY_CONTEXT");
+        Principal principal = (Principal) securityContext.getAuthentication().getPrincipal();
+        String username = principal.getName();
+        return username;
     }
 }

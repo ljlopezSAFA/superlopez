@@ -4,10 +4,10 @@
     <div class="fondo_menu_navegacion">
 
         <div class= "logo">
-            <a href="inicio.html"><img class="img_logo" src="css/imagenes/logo.png"></a>
+            <a th:href="@{/inicio}"><img class="img_logo" src="css/imagenes/logo.png"></a>
         </div>
 
-        <nav>
+        <nav >
             <ul>
                 <li><a th:href="@{/inicio}">Inicio</a></li>
                 <li><a th:href="@{/sobreNosotros}">Sobre Nosotros</a></li>
@@ -18,8 +18,10 @@
             <a class="carrito"th:href="@{/carrito}"><img class="img_carrito" src="css/imagenes/carrito.png"></a>
             <a  sec:authorize="isAnonymous()" class="login" th:href="@{/login}"><img width="55" height="55" class="img_carrito" src="css/imagenes/usuario.png"></a>
             <a  sec:authorize="isAuthenticated()" class="logout" th:href="@{/logout}"><img  width="40" height="40" class="img_carrito" src="css/imagenes/logout.png"></a>
-            <a sec:authorize="hasAuthority('CLIENTE')" th:href="@{/hoteles}"></a>
+            <a th:href="@{/hoteles}"></a>
         </nav>
+
+
 
     </div>
 </header>
