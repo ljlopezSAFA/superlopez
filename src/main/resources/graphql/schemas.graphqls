@@ -1,0 +1,29 @@
+
+
+type Query{
+    listar: [Producto]
+}
+
+type Mutation{
+    guardarProducto(
+        idProducto: Int
+        producto: ProductoInput!
+    ): String
+
+    borrarProducto(
+        idProducto: Int!
+    ): String
+}
+
+
+type Producto{
+    id: ID!
+    descripcion: String
+}
+
+input ProductoInput{
+    descripcion:String
+}
+
+
+

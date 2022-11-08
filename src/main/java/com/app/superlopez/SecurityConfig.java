@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/ofertas").hasRole(Rol.ADMINISTRADOR.toString())
                 .antMatchers("/carrito").hasRole(Rol.CLIENTE.toString())
                 .antMatchers("/register").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/graphiql").permitAll()
                 .and()
                 .formLogin().loginPage("/login")
                 .defaultSuccessUrl("/inicio")
