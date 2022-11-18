@@ -61,6 +61,6 @@ public class LineaPedido {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, pedido, loteBarbacoa, cantidad);
+        return Objects.hash(id, loteBarbacoa, cantidad);
     }
 }

@@ -42,7 +42,7 @@ public class ProductoService {
      *
      * @param producto
      */
-    public void guardarProducto(Producto producto){
+    public Producto guardarProducto(Producto producto){
         Producto productoBD ;
         if(producto.getId() != null) {
             productoBD = buscarPorId(producto.getId());
@@ -54,7 +54,7 @@ public class ProductoService {
         }
         productoBD.setDescripcion(producto.getDescripcion());
 
-        productoRepository.save(productoBD);
+        return productoRepository.save(productoBD);
     }
 
 
