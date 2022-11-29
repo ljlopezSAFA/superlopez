@@ -15,6 +15,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.util.AssertionErrors.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -44,6 +46,21 @@ public class ProductoServiceTest {
 
     }
 
+    @Test
+    @DisplayName("Producto Service -> Test delete por id")
+    public void deleteTest(){
+
+        //Given
+        Producto producto = UtilidadesProducto.crearProducto();
+        Mockito.when(productoRepository.findById(any())).thenReturn(Optional.of(producto));
+
+        //When
+        productoService.eliminarProducto(1);
+
+        //Then
+        verify(productoRepository,times(1)).delete(any());
+
+    }
 
 
 }

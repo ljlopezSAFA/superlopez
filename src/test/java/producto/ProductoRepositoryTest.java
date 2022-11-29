@@ -5,18 +5,18 @@ import com.app.superlopez.model.Producto;
 import com.app.superlopez.repository.ProductoRepository;
 import com.app.superlopez.utilidades.UtilidadesProducto;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 import static org.springframework.test.util.AssertionErrors.assertNotNull;
+
 
 
 @ExtendWith(SpringExtension.class)
@@ -32,32 +32,27 @@ public class ProductoRepositoryTest {
 
 
     @Autowired
-    private ProductoRepository productoRepository;
+    ProductoRepository productoRepository;
 
     @Autowired
-    private TestEntityManager entityManager;
+    TestEntityManager entityManager;
 
 
-    @BeforeEach
 
+    @Test
+    public void guardarProductoTest(){
 
-    @AfterEach
+        //Given
+        Producto productoEsperado = UtilidadesProducto.crearProducto();
 
+        //When
+        Producto productoObtenido = productoRepository.save(productoEsperado);
 
-//    @Test
-//    public void guardarProductoTest(){
-//
-//        //Given
-//        Producto productoEsperado = UtilidadesProducto.crearProducto();
-//
-//        //When
-//        Producto productoObtenido = productoRepository.save(productoEsperado);
-//
-//        //Then
-//        assertNotNull( "No se ha guardado en bbdd el producto", productoObtenido);
-//        assertEquals("Los productos no coinciden ",productoEsperado.getDescripcion(),productoObtenido.getDescripcion());
-//
-//    }
+        //Then
+        assertNotNull( "No se ha guardado en bbdd el producto", productoObtenido);
+        assertEquals("Los productos no coinciden ",productoEsperado.getDescripcion(),productoObtenido.getDescripcion());
+
+    }
 
 
     @Test
